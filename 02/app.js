@@ -3,7 +3,8 @@ function manufacture(gifts, materials) {
 
   return gifts.filter(
     (gift) =>
-      [...new Set([...gift, ...materialsArr])].length === materialsArr.length,
+      Array.from(new Set(gift.split("").concat(materialsArr))).length ===
+      materialsArr.length,
   );
 }
 
