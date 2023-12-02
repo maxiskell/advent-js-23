@@ -1,19 +1,10 @@
 function manufacture(gifts, materials) {
-  let result = [];
+  const materialsArr = materials.split("");
 
-  for (let gift of gifts) {
-    let i = 0;
-
-    while (i < gift.length && materials.includes(gift.charAt(i))) {
-      i++;
-    }
-
-    if (i === gift.length) {
-      result.push(gift);
-    }
-  }
-
-  return result;
+  return gifts.filter(
+    (gift) =>
+      [...new Set([...gift, ...materialsArr])].length === materialsArr.length,
+  );
 }
 
 {
