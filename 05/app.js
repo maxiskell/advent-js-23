@@ -1,10 +1,13 @@
 function cyberReindeer(road, time) {
   let pos = 0;
-  let result = [road];
-  let movesCount = 1;
   let prev = ".";
+  let result = [road];
 
-  while (time > 1) {
+  for (let i = 1; i < time; i++) {
+    if (i === 5) {
+      road = road.replaceAll("|", "*");
+    }
+
     switch (road[pos + 1]) {
       case ".":
         road = road.substring(0, pos) + `${prev}S` + road.substring(pos + 2);
@@ -21,13 +24,6 @@ function cyberReindeer(road, time) {
     }
 
     result.push(road);
-
-    time--;
-    movesCount++;
-
-    if (movesCount === 5) {
-      road = road.replaceAll("|", "*");
-    }
   }
 
   return result;
